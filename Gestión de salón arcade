@@ -1,0 +1,35 @@
+Enunciado del Trabajo Práctico: Gestión de Salón Arcade
+Contexto del problema:
+Has sido contratado para desarrollar el sistema de administración de un salón de videojuegos clásicos (Arcade). El encargado del local necesita una aplicación de consola en C# que le permita llevar el control de las máquinas recreativas disponibles, registrar cuántas fichas/partidas se jugaron en cada una durante el día y cuál es el costo por partida de cada juego.
+
+Requerimientos técnicos:
+
+Estructura de datos (struct): Debes utilizar la estructura MaquinaArcade que contiene exactamente los siguientes 3 campos:
+
+NombreJuego (string): El título del videojuego (ej. "Pac-Man", "Street Fighter II", "Metal Slug").
+
+PartidasJugadas (int): La cantidad de partidas/fichas jugadas en esa máquina durante la jornada.
+
+PrecioFicha (double): El valor en pesos de cada ficha/partida para ese juego.
+
+Almacenamiento: Todas las máquinas registradas deben almacenarse en una colección dinámica List<MaquinaArcade>.
+
+Menú interactivo: El programa debe ejecutarse de forma continua mediante un ciclo while y evaluar la opción elegida con una estructura switch que contemple estas 8 funcionalidades:
+
+Opción 1 - Registrar nueva máquina: Solicitar los 3 datos al usuario y agregarlos a la lista. Es obligatorio utilizar bloques try-catch para evitar que el programa se cierre si el usuario ingresa letras o símbolos en los campos numéricos (int y double).
+
+Opción 2 - Mostrar todas las máquinas: Recorrer la lista e imprimir en pantalla los datos completos de cada juego registrado (o avisar si la lista está vacía).
+
+Opción 3 - Calcular promedio de precio de ficha: Calcular y mostrar el promedio general del campo PrecioFicha entre todas las máquinas cargadas.
+
+Opción 4 - Buscar máquina por nombre: Pedir el nombre de un juego al usuario, buscarlo en la lista (sin importar mayúsculas o minúsculas) y mostrar sus datos si existe, o un mensaje indicando que no se encontró.
+
+Opción 5 - Mostrar juegos con ficha superior al promedio: Listar únicamente aquellas máquinas cuyo PrecioFicha sea estrictamente mayor al promedio calculado en la Opción 3.
+
+Opción 6 - Mostrar ficha más cara y más barata: Identificar y mostrar en pantalla la máquina con el PrecioFicha máximo y la máquina con el PrecioFicha mínimo.
+
+Opción 7 - Eliminar máquina por nombre: Solicitar el nombre de un juego, buscarlo en la lista y eliminarlo. Informar si la eliminación fue exitosa o si el juego no existía.
+
+Opción 8 - Salir: Finalizar la ejecución del programa de forma ordenada.
+
+(Nota para tu entrega: Recuerda especificar la temática "Gestión de Salón Arcade" en tu archivo README.md).
