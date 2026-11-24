@@ -1,0 +1,46 @@
+Respuestas al Cuestionario Teórico
+1. ¿Cuál es la diferencia principal entre un método void y uno que devuelve un int?
+
+Método void: Actúa como un procedimiento. Ejecuta una secuencia de instrucciones para producir un efecto secundario (como mostrar datos en consola, modificar un archivo o un estado) y no devuelve ningún valor al llamador. No puede utilizar la instrucción return seguida de un dato.
+Método con retorno int: Actúa como una función matemática o transformadora. Recibe datos de entrada, realiza un procesamiento y devuelve obligatoriamente un valor de tipo entero utilizando la palabra clave return. Puede integrarse directamente en expresiones (ej. int resultado = 5 + MiFuncion();).
+
+2. ¿Qué sucede con el código de un método que se encuentra escrito debajo de una instrucción return?
+
+Se convierte en código inalcanzable (unreachable code). El compilador de C# detectará esto y generará un error de compilación (Error CS0162: "Se detectó código inaccesible"), impidiendo que el programa se compile. La instrucción return finaliza de manera inmediata la ejecución del método y devuelve el control al llamador.
+
+3. ¿Por qué es recomendable usar nombres de verbos para las funciones?
+
+Las funciones representan acciones o comportamientos (qué hace el sistema), a diferencia de las variables o clases, que suelen ser sustantivos (qué es el objeto). Usar verbos (como Calcular, Obtener, Validar, Imprimir) mejora la legibilidad del código, haciendo que las líneas de código se lean casi como lenguaje natural y comunicando claramente la intención del método (Abstracción de Control).
+
+4. Si paso un int x = 10 a un método Duplicar(int n) por valor, ¿qué valor tendrá x después de la llamada si adentro del método hice n = n * 2?
+
+El valor de x seguirá siendo 10.
+Justificación: Al pasar el parámetro por valor (por defecto en los tipos de valor como int), C# crea una copia exacta del contenido de x (10) en una nueva posición de memoria en el Stack, la cual se asigna a la variable local n. Modificar n dentro del método afecta únicamente a esa copia local; la variable original x del ámbito exterior permanece intacta.
+
+5. Explica la diferencia entre un Parámetro y un Argumento.
+
+Parámetro (Parámetro Formal): Es la variable declarada en la firma del método que actúa como receptora de los datos (ej. en void Saludar(string nombre), nombre es el parámetro).
+Argumento (Parámetro Actual): Es el valor o variable real que se envía al método al momento de invocarlo (ej. en Saludar("Carlos");, "Carlos" es el argumento).
+
+6. ¿En qué situación preferirías usar un parámetro out en lugar de un ref?
+
+Preferirías usar out cuando el método tiene como único propósito producir múltiples valores de salida y la variable que se pasa no necesita contener ningún valor previo antes de entrar al método. Un ejemplo clásico es Int32.TryParse, donde el método te devuelve un booleano indicando si tuvo éxito y, a través de un parámetro out, te entrega el número parseado sin exigir que inicialices esa variable antes de llamar al método.
+
+7. ¿Cuál es la diferencia entre un método y una función?
+
+En lenguajes estrictamente orientados a objetos como C#, técnicamente todo es un método, ya que cualquier función o procedimiento debe pertenecer obligatoriamente a una clase o estructura. Históricamente y de forma conceptual:
+Una función retorna un valor.
+Un procedimiento ejecuta acciones sin retornar valores (equivalente al void en C#).
+En el ecosistema de C#, se suele usar la palabra "método" como término general para ambos.
+
+8. ¿Es posible realizar una sobrecarga de un método cambiando solamente el modificador static por uno de instancia? Justifica.
+
+No, no es posible. El compilador de C# determina la firma de un método basándose exclusivamente en su nombre y su lista de parámetros (cantidad, tipo y orden). Los modificadores de acceso (public, private), los modificadores de visibilidad o contexto (static), o el tipo de retorno no forman parte de la firma. Intentar crear dos métodos con idénticos parámetros donde uno es static y el otro no, provocará un error de compilación por duplicidad de miembros.
+
+9. Describe cómo la modularización ayuda a cumplir el principio DRY (Don't Repeat Yourself).
+
+El principio DRY postula que "cada pieza de conocimiento debe tener una representación única, inequívoca y única dentro de un sistema". La modularización permite aislar la lógica repetitiva (por ejemplo, el cálculo de un impuesto o una validación de formato) dentro de un único método centralizado. En lugar de duplicar bloques de código idénticos en múltiples lugares del programa, el sistema simplemente invoca ese módulo reutilizable cuantas veces sea necesario. Si la lógica cambia en el futuro, solo se modifica en un único lugar.
+
+10. En términos de memoria, ¿qué se almacena en el Stack cuando pasamos un parámetro con la palabra clave ref?
+
+Cuando se utiliza la palabra clave ref, en lugar de copiar el valor de la variable, el Stack almacena la dirección de memoria (puntero) de la variable original. Esto permite que tanto el método llamador como el método llamado operen exactamente sobre la misma celda de memoria.
